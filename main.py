@@ -1,22 +1,25 @@
 # -*- coding: utf-8 -*
-import sys
 import pygame
 from settings import Settings
+from player import Player
+import game_functions as gf
 
 def run_game():
+
     pygame.init()
     ai_settings = Settings()
+    #创建屏幕
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Supreme Commander Kim VS Trump")
+    #创建一艘飞船
+    player = Player(screen)
     
     while True:
-        
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-        
-        screen.fill(ai_settings.bg_color)
-        pygame.display.flip()
+
+        #对各个事件做出反应
+        gf.check_events(player)
+        #更新屏幕
+        gf.update_screen(ai_settings, screen, player)
         
 
 run_game()
