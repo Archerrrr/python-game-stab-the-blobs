@@ -10,9 +10,18 @@ class Player():
         
         #加载玩家扮演的人物的形象
         self.image = pygame.image.load('./player.bmp')
-        
+        self.image_right = pygame.image.load('./player_right.bmp')
+        self.image_down = pygame.image.load('./player_down.bmp')
+        self.image_left = pygame.image.load('./player_left.bmp')
+
+        self.moving_up = True
+        self.moving_right = False
+        self.moving_down = False
+        self.moving_left = False
+
         #获取形象的rect属性
         self.rect = self.image.get_rect()
+
         #获取屏幕的rect属性
         self.screen_rect = screen.get_rect()
         
@@ -23,8 +32,15 @@ class Player():
         
     def blitme(self):
         """把图像image根据其rect属性绘制到屏幕的相应位置。"""
-        #调用的是player对象的screen属性的方法，为什么能修改屏幕的属性？已知传参在参数可变的情况下实际传递的是参数的引用，那么复制操作实际也是引用吗？"""
-        self.screen.blit(self.image, self.rect)
+        #调用的是player对象的screen属性的方法，为什么能修改屏幕的属性？因为传参其实传递的是参数的引用"""
+        if self.moving_up:
+            self.screen.blit(self.image, self.rect)
+        elif self.moving_right:
+            self.screen.blit(self.image_right, self.rect)
+        elif self.moving_down:
+            self.screen.blit(self.image_down, self.rect)
+        elif self.moving_left:
+            self.screen.blit(self.image_left, self.rect)
         
 
             
