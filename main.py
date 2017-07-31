@@ -19,7 +19,7 @@ def run_game():
     while True:
        
         #对各个事件做出反应
-        gf.check_events(player)
+        gf.check_events(player, my_blobs)
         #更新屏幕
         gf.update_screen(ai_settings, screen, player, my_blobs)
         

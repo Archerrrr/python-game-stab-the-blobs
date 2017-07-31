@@ -2,8 +2,9 @@
 
 import sys
 import pygame
+import blobs
 
-def check_events(player):
+def check_events(player, blobs):
     """相应各种按键、鼠标事件"""
     #为了根据事件修改玩家位置，需要玩家对象作为参数. 为了防止玩家位置超出屏幕范围，需要屏幕参数作为对象。
     for event in pygame.event.get():
@@ -17,6 +18,7 @@ def check_events(player):
                 player.moving_left = False
                 if player.rect.right <= player.screen_rect.right - 2:
                     player.rect.centerx +=2
+                    blobs.test_explode(player)
             elif event.key == pygame.K_DOWN:
                 player.moving_up = False
                 player.moving_right = False
@@ -24,6 +26,7 @@ def check_events(player):
                 player.moving_left = False
                 if player.rect.bottom <= player.screen_rect.bottom - 2:
                     player.rect.centery +=2
+                    blobs.test_explode(player)
             elif event.key == pygame.K_LEFT:
                 player.moving_up = False
                 player.moving_right = False
@@ -31,6 +34,7 @@ def check_events(player):
                 player.moving_left = True
                 if player.rect.left >= 2:
                     player.rect.centerx -=2
+                    blobs.test_explode(player)
             elif event.key == pygame.K_UP:
                 player.moving_up = True
                 player.moving_right = False
@@ -38,6 +42,7 @@ def check_events(player):
                 player.moving_left = False
                 if player.rect.top >= 2:
                     player.rect.centery -=2
+                    blobs.test_explode(player)
                 
 
                 
