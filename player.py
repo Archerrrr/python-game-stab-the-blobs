@@ -29,6 +29,8 @@ class Player():
         self.rect.centerx = self.screen_rect.centerx
         self.rect.centery = self.screen_rect.centery
         
+        #血量
+        self.life_value = 100
         
     def blitme(self):
         """把图像image根据其rect属性绘制到屏幕的相应位置。"""
@@ -41,6 +43,10 @@ class Player():
             self.screen.blit(self.image_down, self.rect)
         elif self.moving_left:
             self.screen.blit(self.image_left, self.rect)
+            
+    def punish(self,value):
+        self.life_value = self.life_value - value
+        
         
 
             
