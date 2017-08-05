@@ -57,6 +57,5 @@ def update_screen(settings, screen, player, blobs):
     player.blitme()
     #绘制泡泡
     blobs.draw_blobs(screen)
-
     #让最近对屏幕的绘制可见
     pygame.display.flip()

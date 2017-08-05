@@ -32,8 +32,14 @@ class Player():
         #血量
         self.life_value = 100
         
+        #用于显示血量的文字
+        self.font = pygame.font.SysFont(None,22)
+        self.text = self.font.render(str(self.life_value), False, (0, 0, 255))
+
     def blitme(self):
-        """把图像image根据其rect属性绘制到屏幕的相应位置。"""
+        #显示生命值
+        self.text = self.font.render(str(self.life_value), False, (0,0,25))
+        self.screen.blit(self.text, (40,80))
         #调用的是player对象的screen属性的方法，为什么能修改屏幕的属性？因为传参其实传递的是参数的引用"""
         if self.moving_up:
             self.screen.blit(self.image, self.rect)

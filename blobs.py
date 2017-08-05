@@ -46,8 +46,8 @@ class Blobs():
                 distdist = (self.blob_list[value].x - player.rect.centerx)**2 + (self.blob_list[value].y - player.rect.centery)**2
                 if distdist == 0:
                     player.life_value = 0
-                elif ( distdist < ((self.blob_list[value].radius *2)**2)  ):
-                    player.punish(  ((self.blob_list[value].radius *2)**2)/distdist  )
+                elif ( distdist < ((self.blob_list[value].radius)**2)  ):
+                    player.punish(  ((self.blob_list[value].radius)**2)/distdist*10  )
                 #注意，左右工作结束后才能删除这个泡泡，因为删除操作将导致列表index变化
                 temp_blob = self.blob_list.pop(value)
                 
